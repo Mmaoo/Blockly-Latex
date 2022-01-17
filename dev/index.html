@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Latex - Blockly</title>
+  <script src="./node_modules/blockly/blockly_compressed.js"></script>
+  <script src="./node_modules/blockly/blocks_compressed.js"></script>
+  <script src="./node_modules/blockly/javascript_compressed.js"></script>
+  <script src="./node_modules/blockly/msg/pl.js"></script>
+
+  <!-- <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+  <script src="https://unpkg.com/@blockly/dev-tools@2.0.0/dist/index.js"></script> -->
+  
+  <script src="./index.js"></script>
+  <script src="./block-definitions.js"></script>
+  <script src="./generator-stub.js"></script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+      margin: 10px;
+    }
+
+    #blocklyDiv {
+      float: left;
+      height: 90%;
+      width: 49%;
+    }
+
+    #result{
+      float: left;
+      height: 90%;
+      width: 49%;
+    }
+
+  </style>
+</head>
+
+<body onload="start()">
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <category name="Dokumenty" colour="#a5745b">
+	<block type="document"></block>
+	<block type="make_title"></block>
+  </category>
+  <category name="Tekst" colour="#5ba55b">
+	<block type="extend_string">
+      <field name="text"></field>
+    </block>
+    <block type="string_print">
+    </block>
+	<block type="string_print">
+      <value name="text">
+        <block type="extend_string">
+          <field name="text">tekst</field>
+        </block>
+      </value>
+    </block>
+	<block type="special_character"><field name="char">p</field></block>
+	<block type="special_character"><field name="char">hline</field></block>
+	<block type="special_character"><field name="char">alpha</field></block>
+	<block type="special_character"><field name="char">pi</field></block>
+  </category>
+  <category name="Listy" colour="#745ba5">
+    <block type="list_string">
+		<mutation items="0"></mutation>
+	</block>
+	<block type="list_string">
+		<value name="ADD0">
+          <block type="extend_string">
+            <field name="text">tekst</field>
+          </block>
+        </value>
+	</block>
+  </category>
+  <category name="Tabele" colour="#995ba5">
+    <block type="table">
+	  <field name="row_count">1</field>
+	  <field name="column_count">1</field>
+	  <mutation rows="1" columns="1"></mutation>
+	</block>
+	<block type="table">
+	  <field name="row_count">3</field>
+	  <field name="column_count">1</field>
+	  <mutation rows="3" columns="1"></mutation>
+	</block>
+    <block type="table_row">
+	  <mutation columns="1"></mutation>
+	  <value name="COLUMN0">
+          <block type="extend_string">
+            <field name="text">tekst</field>
+          </block>
+      </value>
+	</block>
+    
+  </category>
+  <category name="test" colour="#000000">
+	<block type="en"></block>
+	<block type="testowy"></block>
+	<block type="document2"></block>
+	<block type="lists_create_with_plus_minus"></block>
+	<block type="te"></block>
+	<block type="te2"></block>
+	<block type="list_string"></block>
+	
+	<block type="table_column">
+      <field name="span">1</field>
+      <field name="align">left</field>
+    </block>
+	<block type="list">
+      <field name="type">numeric</field>
+	  <statement name="list_input">
+      <block type="list_item">
+        <value name="text">
+          <block type="extend_string">
+            <field name="text">tekst</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+	  <mutation items="1"></mutation>
+    </block>
+	<block type="list">
+      <field name="type">dotted</field>
+	  <statement name="list_input">
+      <block type="list_item">
+        <value name="text">
+          <block type="extend_string">
+            <field name="text">tekst</field>
+          </block>
+        </value>
+      </block>
+	  <mutation items="1"></mutation>
+    </block>
+	<block type="list_item">
+	  <value name="text">
+          <block type="extend_string">
+            <field name="text">tekst</field>
+          </block>
+      </value>
+	</block>
+	<block type="adapter_vs"></block>
+	
+  </category>
+  
+
+  </xml>
+  
+  
+  
+  
+  
+  <div id="header">
+    <h1>Latex - Blockly</h1>
+    <button onclick="generateScript()">Generuj</button>
+  </div>
+  <div id="blocklyDiv" onclick="generateScript()"></div>
+  <!-- <div id="result"></div> -->
+  <!-- <input id="result" type="text" /> -->
+  <textarea id="result"></textarea>
+</body>
+
+</html>
